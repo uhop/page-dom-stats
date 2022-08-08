@@ -31,7 +31,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Run Hugo
-        run: 'apt install hugo && pushd ./docs && hugo && popd'
+        run: 'sudo apt-get install -y hugo && pushd ./docs && hugo && popd'
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
