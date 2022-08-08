@@ -24,6 +24,7 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 th,
@@ -31,6 +32,18 @@ td {
   margin: 0;
   padding: 0.25em 0.5em;
   border: 1px solid var(--app-table-color);
+}
+
+.col-name {
+  width: 30%;
+}
+
+.col-value {
+  width: 10%;
+}
+
+.col-comment {
+  width: 60%;
 }
 
 .number {
@@ -43,6 +56,10 @@ td {
 
 tbody tr:nth-child(odd) {
   background-color: var(--app-table-odd-bg-color);
+}
+
+tbody td:nth-child(3) {
+  overflow: hidden;
 }
 
 #app-icon {
