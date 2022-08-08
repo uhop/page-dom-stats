@@ -3,6 +3,8 @@ baseURL = "https://uhop.github.io/page-dom-stats/"
 title = "Page DOM stats"
 copyright = "Copyright (c) Eugene Lazutkin 2005-2022, all rights reserved."
 
+googleAnalytics = "G-MTZEYDW7DS"
+
 pygmentsCodeFences = true
 pygmentsStyle = "monokai" # other dark style options: native, vim, fruity, monokai
 
