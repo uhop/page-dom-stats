@@ -29,6 +29,12 @@ const gatherStats = () => {
 
   const getElementStats = (node, stats, depth) => {
     ++stats.total;
+    if (node.tagName === 'SCRIPT') {
+      ++stats.scripts;
+      if (!node.src) {
+        ++stats.inlineScripts;
+      }
+    }
     if (node.childNodes.length) {
       if (node.closest && node.closest('body') && stats.maxChildren < node.childNodes.length) {
         stats.maxChildren = node.childNodes.length;
@@ -51,6 +57,7 @@ const gatherStats = () => {
   const getStyleStats = () => {
     const stats = {
       totalStyleSheets: document.styleSheets.length,
+      inlineStyleSheets: 0,
       unaccessibleStyleSheets: 0,
       totalRules: 0,
       totalSelectors: 0,
@@ -59,6 +66,9 @@ const gatherStats = () => {
     };
     for (const styleSheet of document.styleSheets) {
       try {
+        if (!styleSheet.href) {
+          ++stats.inlineStyleSheets;
+        }
         stats.totalRules += styleSheet.cssRules.length;
         if (stats.maxRules < styleSheet.cssRules.length) {
           stats.maxRules = styleSheet.cssRules.length;
@@ -83,7 +93,7 @@ const gatherStats = () => {
   const cssStats = getStyleStats(),
     domStats = getElementStats(
       document.documentElement,
-      {total: 0, maxChildren: 0, maxDepth: 0},
+      {total: 0, maxChildren: 0, maxDepth: 0, scripts: 0, inlineScripts: 0},
       0
     );
   return {dom: domStats, css: cssStats};
@@ -123,18 +133,24 @@ const place = (id, value, comment) => {
   }
 };
 
-const formatPath = path => path.map(part => `<code>${part}</code>`).join(' &rarr; ');
+const formatPath = path =>
+  "<details><summary>Element's path</summary>" +
+  path.map(part => `<code>${part}</code>`).join(' &rarr; ') +
+  '</details>';
 
 const formatUrl = url => {
   if (!url) return '<em>inline</em>';
-  return `<a href="${url}" target="_blank">${url}</a>`;
-}
+  return `<a href="${url}" title="${url}" target="_blank">${url.replace(/\//g, '/<wbr>')}</a>`;
+};
 
 place('dom-total-nodes', stats.dom.total);
 place('dom-max-children', stats.dom.maxChildren, formatPath(stats.dom.maxChildrenNode));
 place('dom-max-depth', stats.dom.maxDepth, formatPath(stats.dom.maxDepthNode));
+place('dom-scripts', stats.dom.scripts);
+place('dom-inline-scripts', stats.dom.inlineScripts);
 
 place('css-total-style-sheets', stats.css.totalStyleSheets);
+place('css-inline-style-sheets', stats.css.inlineStyleSheets);
 place('css-unaccessible-style-sheets', stats.css.unaccessibleStyleSheets);
 place('css-total-rules', stats.css.totalRules);
 place('css-total-selectors', stats.css.totalSelectors);

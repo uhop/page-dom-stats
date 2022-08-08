@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="color-scheme" content="dark light">
+    <meta name="color-scheme" content="dark light" />
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
@@ -9,6 +9,11 @@
     <h2>DOM stats</h2>
 
     <table>
+      <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+        <col class="col-comment" />
+      </colgroup>
       <thead>
         <tr>
           <th scope="col">Name</th>
@@ -32,12 +37,27 @@
           <td class="number">&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
+        <tr id="dom-scripts">
+          <td>Scripts</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr id="dom-inline-scripts">
+          <td class="dependent">Inline scripts</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
       </tbody>
     </table>
 
     <h2>CSS stats</h2>
 
     <table>
+      <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+        <col class="col-comment" />
+      </colgroup>
       <thead>
         <tr>
           <th scope="col">Name</th>
@@ -48,6 +68,11 @@
       <tbody>
         <tr id="css-total-style-sheets">
           <td>Total style sheets</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr id="css-inline-style-sheets">
+          <td class="dependent">Inline style sheets</td>
           <td class="number">&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
@@ -79,7 +104,7 @@
       </tbody>
     </table>
 
-    <div id="app-icon"><img src="/images/mobile-statistics-icon-48.png"></div>
+    <div id="app-icon"><img src="/images/mobile-statistics-icon-48.png" /></div>
 
     <script src="main.js" type="module"></script>
   </body>
