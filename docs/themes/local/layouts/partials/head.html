@@ -16,14 +16,14 @@
 
   {{ template "_internal/google_analytics_async.html" . }}
 
-  <title>
+
   {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
   {{ if eq $url "/" }}
-      {{ .Site.Title }}
+    <title>{{ .Site.Title }}</title>
   {{ else }}
-      {{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}
+    <title>{{ if .Params.heading }}{{ .Params.heading }}{{ else }}{{ .Title }}{{ end }}</title>
   {{ end }}
-  </title>
+
 
   {{ if .Site.Params.favicon }}<link rel="icon" href="{{ .Site.Params.favicon }}">{{ end }}
 </head>
