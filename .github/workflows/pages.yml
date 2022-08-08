@@ -30,12 +30,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Run Hugo
+        run: 'apt install hugo && pushd ./docs && hugo && popd'
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './site'
+          path: './docs/public'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@main
