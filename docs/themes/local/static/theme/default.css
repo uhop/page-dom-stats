@@ -1,0 +1,460 @@
+/*
+GOOGLE FONTS: OPEN SANS, LEXEND DECA, LEXEND MEGA
+Lexend Mega for stylistic titles
+Lexend Deca for plain titles
+Open Sans for body text
+*/
+
+/* @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Lexend+Mega&family=Open+Sans&display=swap'); */
+
+/*
+font-family: 'Lexend Deca', sans-serif;
+font-family: 'Lexend Mega', sans-serif;
+font-family: 'Open Sans', sans-serif;
+*/
+
+/*
+COLORS:
+#cfdbd5 cool grey
+#e8eddf warm grey
+#d87e2f rust
+#77c0fc sky blue
+#242423 black
+#333533 off-black
+*/
+
+:root {
+  color-scheme: light dark;
+  --bg-color: #eeebee; /* off-white */
+  --fg-color: #333533; /* off-black */
+  --shadow-color: #cfdbd5; /* cool grey */
+  --button-fg-color: #e8eddf; /* warm grey */
+  --page-bg-color: #d87e2f; /* rust */
+  --hover-bg-color: #77c0fc; /* sky blue */
+  --title-dark-fg-color: #242423; /* black */
+  --title-light-fg-color: #eaeaeb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #333533; /* off-black */
+    --fg-color: #eeebee; /* off-white */
+    --shadow-color: #cfdbd5; /* cool grey */
+    --button-fg-color: #e8eddf; /* warm grey */
+    --page-bg-color: #d87e2f; /* rust */
+    --hover-bg-color: #77c0fc; /* sky blue */
+    --title-dark-fg-color: #eaeaeb; /* black */
+    --title-light-fg-color: #242423; /* black */
+  }
+
+  .text-button img {
+    filter: invert(1);
+  }
+}
+
+@media only screen and (max-width: 615px) {
+  #main-content {
+    flex-direction: column;
+  }
+  #header {
+    height: 1em;
+  }
+  #header-bound {
+    min-height: 1em;
+  }
+  .text-button {
+    padding: 0;
+    font-size: 0.75em;
+  }
+  .text-button img {
+    max-width: 1.25em;
+    margin: 0.15em 0.3em;
+  }
+  .text-title {
+    font-size: 1em;
+  }
+}
+@media only screen and (min-width: 615px) {
+  #all {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  #main-content {
+    flex-direction: row;
+  }
+  #header {
+    height: 3em;
+  }
+  #header-bound {
+    min-height: 7em;
+  }
+  #left-main-content,
+  #right-main-content {
+    flex: 1 0 0;
+  }
+  #left-main-content {
+    margin-right: 1em;
+  }
+  #right-main-content {
+    margin-left: 1em;
+  }
+  .text-button {
+    padding: 0.5em;
+    font-size: 1em;
+  }
+  .text-button img {
+    max-width: 1.75em;
+    margin: 0.25em 0.5em;
+  }
+  .text-title {
+    font-size: 2em;
+  }
+}
+
+/* OVERARCHING BIG OL TAGS */
+
+body {
+  margin: 1.5em 2em !important;
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+}
+
+body img {
+  max-width: 100%;
+}
+
+/* HEADER */
+
+#header-bound {
+  position: relative;
+  z-index: 3;
+}
+
+#header-wrap {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  padding-top: 1em;
+  z-index: 1;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+}
+
+#left-wrap {
+  margin-left: 0;
+}
+
+#right-wrap {
+  margin-right: 0;
+}
+
+.nav-title {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 2em;
+}
+
+#text-row {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+.text-title {
+  font-family: 'Lexend Mega', sans-serif;
+  flex-shrink: 0;
+  display: block;
+  margin: 0;
+  color: var(--title-light-fg-color);
+  font-weight: 700;
+  line-height: 1em;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  filter: drop-shadow(0px 0px 3px var(--fg-color)) drop-shadow(0px 0px 3px var(--fg-color));
+}
+
+.text-title img.logo {
+  display: inline-block;
+  position: relative;
+  padding-right: 0.5em;
+  top: 0.125em;
+}
+
+.text-button {
+  display: block;
+  font-family: 'Lexend Mega', sans-serif;
+  color: var(--fg-color);
+  font-weight: 700;
+  line-height: 1em;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  transition: filter ease-in-out 250ms;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.text-button a {
+  font-family: 'Lexend Deca', sans-serif;
+  color: var(--button-fg-color);
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 2em;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+.text-button a:hover,
+.text-button:hover {
+  filter: drop-shadow(0px 1px 0px var(--hover-bg-color));
+}
+
+.text-button img {
+  display: inline-block;
+  position: relative;
+  top: 0.5em;
+}
+
+.too-left img {
+  left: 0.2em;
+}
+.too-low img {
+  top: 0.4em;
+}
+
+.text-icon {
+  display: block;
+  color: var(--title-dark-fg-color);
+  font-size: 2em;
+}
+
+#middle {
+  margin: 1em auto 0;
+  line-height: 1.5em;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  z-index: 5;
+}
+
+/* POSTS */
+
+#main-content {
+  display: flex;
+  flex: auto;
+  justify-content: space-between;
+}
+
+.post {
+  margin: 1em 0;
+  padding: 1em 0;
+}
+
+.post p:last-child {
+  margin: 1em 0 0;
+}
+
+#main-content h1 {
+  font-family: 'Lexend Mega', sans-serif;
+  color: var(--fg-color);
+}
+
+#left-main-content h1,
+#right-main-content h1 {
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+.post h1 {
+  font-size: 1.5em !important;
+  text-transform: none !important;
+  transition: ease-in-out 250ms;
+}
+.post:hover h1 {
+  color: var(--title-dark-fg-color);
+  transition: ease-in-out 250ms;
+}
+h1 a {
+  text-decoration: none;
+  color: var(--fg-color);
+}
+.post h1 a:hover {
+  color: var(--title-dark-fg-color);
+}
+
+.post h2 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 1.25em !important;
+  color: var(--fg-color);
+  transition: ease-in-out 250ms;
+}
+
+.post .rmore-container {
+  text-align: right;
+}
+
+.post .rmore {
+  color: var(--fg-color);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(24, 24, 23, 0);
+  transition: ease-in-out 250ms;
+}
+
+.post:hover .rmore {
+  border-bottom: 2px solid rgba(24, 24, 23, 1);
+  transition: ease-in-out 250ms;
+}
+
+.post:hover .rmore:hover {
+  color: var(--hover-bg-color);
+  border-bottom: 2px solid rgb(119, 192, 252, 1);
+  transition: ease-in-out 250ms;
+}
+
+.post p a,
+.post ol a,
+.post ul a,
+#right-main-content .links a {
+  color: var(--fg-color);
+  font-weight: 700;
+}
+.post p img {
+  max-width: 100%;
+}
+#right-main-content .links p {
+  margin: 0.5em 0;
+}
+
+.post .date {
+  text-align: right;
+  color: var(--fg-color);
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 700;
+}
+
+.tags {
+  margin: 1em 0 1.5em;
+}
+
+.tag a {
+  padding: 0.25em;
+  border-radius: 10px;
+  color: var(--title-light-fg-color);
+  background-color: var(--fg-color);
+  font-weight: 800;
+  line-height: 200%;
+  text-decoration: none;
+  transition: ease-in-out 500ms;
+}
+
+.tag a:hover {
+  color: #fff;
+  background-color: var(--hover-bg-color);
+  transition: ease-in-out 250ms;
+}
+
+.inverse a {
+  color: #fff;
+  background-color: var(--page-bg-color);
+  transition: ease-in-out 500ms;
+}
+
+.inverse a:hover {
+  color: var(--title-light-fg-color);
+  background-color: var(--fg-color);
+  transition: ease-in-out 250ms;
+}
+
+/* RIGHT LINKS */
+
+#right-main-content {
+  max-width: 10em;
+}
+
+/* FOOTER */
+
+#footer {
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 3em;
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 0.75em;
+}
+
+/* THEME */
+
+.post .title,
+h1.term-list-title {
+  text-align: left;
+}
+
+.post p img {
+  margin: 0;
+}
+
+.post-preview .meta {
+  padding: 0;
+  align-items: center;
+}
+
+.post code {
+  font-size: 125%;
+}
+
+.terms {
+  width: auto;
+}
+.terms .term {
+  padding: 0.5em 0;
+  font-family: 'Lexend Deca', sans-serif;
+}
+.terms .term a {
+  color: var(--fg-color);
+}
+.terms .term a .page-count,
+.page-arrows a {
+  color: var(--page-bg-color);
+  filter: drop-shadow(0px 0px 2px var(--shadow-color));
+  transition: color ease-in-out 250ms, filter ease-in-out 250ms;
+}
+.terms .term a .page-count:hover,
+.page-arrows a:hover {
+  color: var(--fg-color);
+  filter: drop-shadow(0px 0px 3px var(--page-bg-color));
+  transition: color ease-in-out 250ms, filter ease-in-out 250ms;
+}
+
+.reading-time {
+  color: var(--fg-color);
+  font-style: italic;
+}
+
+/* article.post-preview .meta{
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+  display: -webkit-flex;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+article.post-preview .tags {
+  margin-bottom: 0.2em;
+  font-size: 0.7em;
+}
+
+article.post-preview .date {
+  font-size: 0.7em;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: right;
+}
+ */

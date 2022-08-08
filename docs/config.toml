@@ -1,0 +1,27 @@
+theme = "local"
+baseURL = "https://uhop.github.io/page-dom-stats/"
+title = "Page DOM stats"
+copyright = "Copyright (c) Eugene Lazutkin 2005-2022, all rights reserved."
+
+pygmentsCodeFences = true
+pygmentsStyle = "monokai" # other dark style options: native, vim, fruity, monokai
+
+canonifyurls = true
+
+SectionPagesMenu = "main"
+
+[author]
+  name = "Eugene Lazutkin"
+
+[params.meta]
+  keywords = "chrome extension, browser, performance"
+  description = "A simple Chrome extension to inspect performance-related properties of a web page."
+
+[params]
+  favicon = "/images/icon-16.png"
+  logo = "/images/icon-32.png"
+  # email = "eugene.lazutkin+cws@gmail.com"
+  twitter = "uhop"
+  linkedin = "elazutkin"
+  facebook = "elazutkin"
+  github = "uhop"

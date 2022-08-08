@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+{{ partial "head.html" . }}
+<body style="margin: inherit;">
+    <div id="all">
+        <div id="header-bound">
+            <div id="header-wrap">
+                <div id="header">
+                    <div id="left-wrap">
+                        <div class="nav-title">
+                            <a class="text-title" href="{{ .Site.BaseURL }}">{{ if .Site.Params.logo }}<img class="logo" src="{{ .Site.Params.logo }}" alt="Logo">{{ end }}{{ .Site.Title }}</a>
+                        </div>
+                    </div>
+                    <div id="right-wrap">
+                      <ul id="text-row">
+                          {{ if .Site.Params.email }}<li class="text-button"> <a href="mailto:{{ .Site.Params.email }}"><img src="/images/email.png" alt="Email"></a></li>{{ end }}
+                          {{ if .Site.Params.github }}<li class="text-button too-low"> <a href="https://github.com/{{ .Site.Params.github }}" target="_blank"><img src="/images/github.png" alt="GitHub"></a></li>{{ end }}
+                          {{ if .Site.Params.linkedin }}<li class="text-button too-left"> <a href="https://www.linkedin.com/in/{{ .Site.Params.linkedin }}" target="_blank"><img src="/images/linkedin.png" alt="LinkedIn"></a></li>{{ end }}
+                          {{ if .Site.Params.twitter }}<li class="text-button"> <a href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank"><img src="/images/twitter.png" alt="Twitter"></a></li>{{ end }}
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div id="middle">
+                <div id="main-content">
+                    <div id="left-main-content">
