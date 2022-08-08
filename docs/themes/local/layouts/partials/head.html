@@ -5,17 +5,16 @@
   <meta name="keywords" content="{{ .Site.Params.meta.keywords }}" />
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   {{ hugo.Generator }}
-
   <link rel="canonical" href="{{ .Permalink }}">
+
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/twitter_cards.html" . }}
   {{ template "_internal/schema.html" . }}
 
+  {{ partial "gtag.html" . }}
+
   <link rel="stylesheet" href="/theme/layout.css" />
   <link rel="stylesheet" href="/theme/default.css" />
-
-  {{ template "_internal/google_analytics_async.html" . }}
-
 
   {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
   {{ if eq $url "/" }}

@@ -3,8 +3,6 @@ baseURL = "https://uhop.github.io/page-dom-stats/"
 title = "Page DOM stats"
 copyright = "Copyright (c) Eugene Lazutkin 2005-2022, all rights reserved."
 
-googleAnalytics = "G-MTZEYDW7DS"
-
 pygmentsCodeFences = true
 pygmentsStyle = "monokai" # other dark style options: native, vim, fruity, monokai
 
@@ -22,6 +20,7 @@ SectionPagesMenu = "main"
 [params]
   favicon = "/images/icon-16.png"
   logo = "/images/icon-32.png"
+  gtag = "G-MTZEYDW7DS"
   # email = "eugene.lazutkin+cws@gmail.com"
   twitter = "uhop"
   linkedin = "elazutkin"
