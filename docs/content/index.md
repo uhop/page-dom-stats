@@ -1,6 +1,7 @@
 +++
 title = "Page DOM stats"
 date = "2022-08-07T14:41:40-05:00"
+slug = "/"
 +++
 
 This is a simple Chrome extension to inspect performance-related properties of a web page:
