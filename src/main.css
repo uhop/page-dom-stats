@@ -1,0 +1,52 @@
+:root {
+  color-scheme: light dark;
+  --app-bg-color: white;
+  --app-fg-color: #333;
+  --app-table-color: #ccc;
+  --app-table-odd-bg-color: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --app-bg-color: black;
+    --app-fg-color: #ddd;
+    --app-table-color: #444;
+    --app-table-odd-bg-color: #222;
+  }
+}
+
+body {
+  width: 50em;
+  background-color: var(--app-bg-color);
+  color: var(--app-fg-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  margin: 0;
+  padding: 0.25em 0.5em;
+  border: 1px solid var(--app-table-color);
+}
+
+.number {
+  text-align: right;
+}
+
+.dependent {
+  padding-left: 2em;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--app-table-odd-bg-color);
+}
+
+#app-icon {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}

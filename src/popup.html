@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="color-scheme" content="dark light">
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <h1>Page DOM stats &mdash; performance</h1>
+    <h2>DOM stats</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col" class="number">Value</th>
+          <th scope="col">Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="dom-total-nodes">
+          <td>Total nodes</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr id="dom-max-children">
+          <td>Max children</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr id="dom-max-depth">
+          <td>Max depth</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>CSS stats</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col" class="number">Value</th>
+          <th scope="col">Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="css-total-style-sheets">
+          <td>Total style sheets</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr id="css-unaccessible-style-sheets">
+          <td class="dependent">Unaccessible style sheets</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr id="css-total-rules">
+          <td>Total rules</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr id="css-total-selectors">
+          <td>Total selectors</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr id="css-max-rules">
+          <td>Max rules</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr id="css-max-selectors">
+          <td>Max selectors</td>
+          <td class="number">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="app-icon"><img src="/images/mobile-statistics-icon-48.png"></div>
+
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
