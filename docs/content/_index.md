@@ -30,4 +30,4 @@ Sample output:
 
 This is an open source project under the BSD-3-Clause license: [git repo](https://github.com/uhop/page-dom-stats).
 
-All pertinent information can be found in [the wiki](https://github.com/uhop/page-dom-stats/wiki) including [the release notes](https://github.com/uhop/page-dom-stats/wiki/Release-notes).
+All pertinent information can be found in [the wiki](https://github.com/uhop/page-dom-stats/wiki) including [the release history](https://github.com/uhop/page-dom-stats/wiki/Release-history).
