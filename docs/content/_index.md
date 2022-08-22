@@ -4,6 +4,8 @@ date = "2022-08-07T14:41:40-05:00"
 slug = "/"
 +++
 
+Install the current version: [chrome web store](https://chrome.google.com/webstore/detail/page-dom-stats/odnddbdbkhgfnfiaakkdlhjmefnfpdnh?hl=en&authuser=0)
+
 # Info
 
 This is a simple Chrome extension to inspect performance-related properties of a web page:
@@ -12,6 +14,7 @@ This is a simple Chrome extension to inspect performance-related properties of a
   * Total number of DOM nodes
   * Maximum number of children
   * Maximum depth
+  * Total number of scripts
 * CSS size:
   * Total number of style sheets
   * Total number of rules

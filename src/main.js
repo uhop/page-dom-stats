@@ -140,7 +140,7 @@ const formatPath = path =>
 
 const formatUrl = url => {
   if (!url) return '<em>inline</em>';
-  return `<a href="${url}" title="${url}" target="_blank">${url.replace(/\//g, '/<wbr>')}</a>`;
+  return `<a href="${url}" title="${url}" target="_blank">${url.replace(/\//g, '<wbr>/')}</a>`;
 };
 
 place('dom-total-nodes', stats.dom.total);
