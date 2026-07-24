@@ -423,13 +423,17 @@ h1.term-list-title {
 .page-arrows a {
   color: var(--page-bg-color);
   filter: drop-shadow(0px 0px 2px var(--shadow-color));
-  transition: color ease-in-out 250ms, filter ease-in-out 250ms;
+  transition:
+    color ease-in-out 250ms,
+    filter ease-in-out 250ms;
 }
 .terms .term a .page-count:hover,
 .page-arrows a:hover {
   color: var(--fg-color);
   filter: drop-shadow(0px 0px 3px var(--page-bg-color));
-  transition: color ease-in-out 250ms, filter ease-in-out 250ms;
+  transition:
+    color ease-in-out 250ms,
+    filter ease-in-out 250ms;
 }
 
 .reading-time {
