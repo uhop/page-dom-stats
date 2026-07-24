@@ -4,8 +4,9 @@ Page DOM Stats — a Manifest V3 Chrome extension that gathers DOM and CSS stati
 
 ## Layout
 
-- `src/` — the extension: `manifest.json` (the version of record — there is no `package.json`), `popup.html` + `main.css` (the popup UI), `main.js` (popup logic plus the injected `gatherStats`). Dependency-free vanilla JS, no build step.
-- `docs/` — Hugo site published to GitHub Pages by `.github/workflows/pages.yml`; `docs/themes/local` is a project-local theme, not a vendored third party.
+- `src/` — the extension: `manifest.json` (the version of record — there is no `package.json`), `popup.html` + `main.css` (the popup UI), `core.js` (the measurement core — a self-contained classic-script `gatherStats`, shared by all shells), `main.js` (popup logic; injects the core via `chrome.scripting`). Dependency-free vanilla JS, no build step.
+- `docs/` — Hugo site published to GitHub Pages by `.github/workflows/pages.yml`; `docs/themes/local` is a project-local theme, not a vendored third party. The docs build also assembles two more shells from the same core (mounted from `../src` via `config.toml` module mounts): a bookmarklet (`docs/assets/overlay.js` + the `bookmarklet` shortcode — fully self-contained `javascript:` URL, Hugo-minified and percent-encoded) and a copy-paste console snippet (`console-snippet` shortcode).
+- `core.js` must stay fully self-contained (no references outside its own body) and export-free: `chrome.scripting` serializes it via `toString()`, and the docs shortcodes inline it verbatim into non-module contexts.
 - `wiki/` — the GitHub wiki as an HTTPS submodule; carries the detailed release history.
 
 ## Develop / test

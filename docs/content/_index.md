@@ -56,6 +56,18 @@ it is easy:
 That's why I decided to create a simple Chrome extension that will help me to do spot checks of web applications
 allowing me to keep an eye on their DOM/CSS complexity and structure.
 
+# Bookmarklet and console
+
+The extension itself runs on desktop Chromium browsers. Two more shells run the same measurement core in any browser:
+
+**Bookmarklet**: drag this link to the bookmarks bar, then click it on any page: {{< bookmarklet >}}. It is fully
+self-contained, so it works on pages with a strict CSP. Click it again to refresh the numbers; the panel has a
+close button.
+
+**Console snippet**: paste into the DevTools console of any browser (Chrome asks to type "allow pasting" first):
+
+{{< console-snippet >}}
+
 # Code
 
 This is an open source project under the BSD-3-Clause license: [git repo](https://github.com/uhop/page-dom-stats).

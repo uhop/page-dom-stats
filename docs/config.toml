@@ -13,6 +13,21 @@ SectionPagesMenu = "main"
 [params.author]
   name = "Eugene Lazutkin"
 
+# declaring any mount replaces the defaults — content and static must be re-listed
+[module]
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "../src"
+    target = "assets/ext"
+
 [params.meta]
   keywords = "chrome extension, browser, performance"
   description = "A simple Chrome extension to inspect performance-related properties of a web page."

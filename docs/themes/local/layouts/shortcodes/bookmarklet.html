@@ -1,0 +1,12 @@
+{{- $core := resources.Get "ext/core.js" | minify -}}
+{{- $shell := resources.Get "overlay.js" | minify -}}
+{{- $js := printf "(()=>{%s\n%s\nrenderStats(gatherStats());})()" $core.Content $shell.Content -}}
+{{- $js = replace $js "%" "%25" -}}
+{{- $js = replace $js "&" "%26" -}}
+{{- $js = replace $js "\"" "%22" -}}
+{{- $js = replace $js "#" "%23" -}}
+{{- $js = replace $js "+" "%2B" -}}
+{{- $js = replace $js "'" "%27" -}}
+{{- $js = replace $js "<" "%3C" -}}
+{{- $js = replace $js "\n" "%0A" -}}
+<a href="{{ printf "javascript:%s" $js | safeURL }}" title="Drag this link to your bookmarks bar">Page DOM Stats</a>

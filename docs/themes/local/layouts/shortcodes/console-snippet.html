@@ -1,0 +1,5 @@
+{{- $core := resources.Get "ext/core.js" -}}
+<pre><code>{{ $core.Content }}
+const stats = gatherStats();
+console.table(stats.dom);
+console.table(stats.css);</code></pre>
