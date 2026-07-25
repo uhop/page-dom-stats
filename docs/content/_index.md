@@ -5,6 +5,8 @@ slug = "/"
 +++
 
 Install the current version: [chrome web store](https://chrome.google.com/webstore/detail/page-dom-stats/odnddbdbkhgfnfiaakkdlhjmefnfpdnh?hl=en&authuser=0)
+— or, for any browser, drag this link to your bookmarks bar: {{< bookmarklet >}} (see
+[details below](#bookmarklet-and-console)).
 
 # Info
 

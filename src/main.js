@@ -42,16 +42,77 @@ const formatUrl = url => {
   return `<a href="${url}" title="${url}" target="_blank">${url.replace(/\//g, '<wbr>/')}</a>`;
 };
 
-place('dom-total-nodes', stats.dom.total);
-place('dom-max-children', stats.dom.maxChildren, formatPath(stats.dom.maxChildrenNode));
-place('dom-max-depth', stats.dom.maxDepth, formatPath(stats.dom.maxDepthNode));
+const formatBytes = bytes => {
+  if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + ' MB';
+  if (bytes >= 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return bytes + ' B';
+};
+
+const withVerdict = (verdict, rest) => [verdict, rest].filter(Boolean).join(' ');
+
+place('dom-total-nodes', stats.dom.total, stats.verdicts.totalNodes);
+place('dom-elements', stats.dom.elements);
+place('dom-text-nodes', stats.dom.textNodes);
+place(
+  'dom-hidden-nodes',
+  stats.dom.hiddenNodes,
+  stats.dom.hiddenNodes
+    ? ((stats.dom.hiddenNodes / stats.dom.total) * 100).toFixed(1) + '% of total'
+    : ''
+);
+place('dom-shadow-roots', stats.dom.shadowRoots);
+place('dom-shadow-nodes', stats.dom.shadowNodes);
+place(
+  'dom-iframes',
+  stats.dom.iframes,
+  stats.dom.crossOriginIframes ? stats.dom.crossOriginIframes + ' cross-origin (not measured)' : ''
+);
+place('dom-top-tags', undefined, stats.dom.topTags);
+place(
+  'dom-max-children',
+  stats.dom.maxChildren,
+  withVerdict(stats.verdicts.maxChildren, formatPath(stats.dom.maxChildrenNode))
+);
+place('dom-p95-children', stats.dom.p95Children);
+place(
+  'dom-max-depth',
+  stats.dom.maxDepth,
+  withVerdict(stats.verdicts.maxDepth, formatPath(stats.dom.maxDepthNode))
+);
+place('dom-p95-depth', stats.dom.p95Depth);
+place('dom-max-attributes', stats.dom.maxAttributes, formatPath(stats.dom.maxAttributesNode));
+place('dom-inline-style-attrs', stats.dom.inlineStyleAttrs);
 place('dom-scripts', stats.dom.scripts);
 place('dom-inline-scripts', stats.dom.inlineScripts);
 
 place('css-total-style-sheets', stats.css.totalStyleSheets);
 place('css-inline-style-sheets', stats.css.inlineStyleSheets);
+place('css-adopted-style-sheets', stats.css.adoptedStyleSheets);
 place('css-unaccessible-style-sheets', stats.css.unaccessibleStyleSheets);
 place('css-total-rules', stats.css.totalRules);
 place('css-total-selectors', stats.css.totalSelectors);
 place('css-max-rules', stats.css.maxRules, formatUrl(stats.css.maxRulesSource));
 place('css-max-selectors', stats.css.maxSelectors, formatUrl(stats.css.maxSelectorsSource));
+
+const perf = stats.perf;
+const ms = value => (value === undefined ? '' : 'ms');
+place('perf-ttfb', perf.ttfb, ms(perf.ttfb));
+place('perf-dcl', perf.domContentLoaded, ms(perf.domContentLoaded));
+place('perf-load', perf.load, perf.load ? 'ms' : perf.load === 0 ? 'not finished yet' : '');
+place('perf-fcp', perf.fcp, ms(perf.fcp));
+place('perf-lcp', perf.lcp, ms(perf.lcp));
+if (perf.cls !== undefined) place('perf-cls', perf.cls.toFixed(3));
+place(
+  'perf-requests',
+  perf.requests,
+  withVerdict(
+    perf.resourceBufferFull ? 'buffer full — undercount!' : '',
+    Object.entries(perf.requestsByType || {})
+      .sort((a, b) => b[1] - a[1])
+      .map(([type, count]) => type + '×' + count)
+      .join(' ')
+  )
+);
+if (perf.transferred !== undefined) place('perf-transferred', formatBytes(perf.transferred));
+place('perf-fonts', perf.fonts);
+if (perf.jsHeap !== undefined) place('perf-js-heap', formatBytes(perf.jsHeap), 'Chrome only');
