@@ -72,8 +72,8 @@ The extension itself runs on desktop Chromium browsers. Two more shells run the 
 
 **Bookmarklet**: drag this link to the bookmarks bar, then click it on any page: {{< bookmarklet >}}. It is fully
 self-contained, so it works on pages with a strict CSP. Click it again to refresh the numbers; the panel has a
-close button. Known limitation: Epiphany (GNOME Web) may mangle the bookmark's name and can crash when the
-bookmark is activated — there, click the link directly on this page, or use the console snippet below.
+close button. Known limitation: Epiphany (GNOME Web) does not support `javascript:` bookmarks (activating one
+crashes it) — there, click the link directly on this page, or use the console snippet below.
 
 **Console snippet**: paste into the DevTools console of any browser (Chrome asks to type "allow pasting" first):
 
@@ -85,12 +85,3 @@ This is an open source project under the BSD-3-Clause license: [git repo](https:
 
 All pertinent information can be found in [the wiki](https://github.com/uhop/page-dom-stats/wiki)
 including [the release history](https://github.com/uhop/page-dom-stats/wiki/Release-history).
-
-# Bookmark test
-
-A diagnostic for how a browser handles `javascript:` URLs as bookmarks (some mishandle large ones — see the
-bookmarklet limitation above). Each link below simply shows an alert; they differ only in inert padding.
-Drag each to the bookmarks, then activate it as a bookmark: note whether the name imports correctly and
-whether activation works, crashes, or does nothing. Clicked directly on this page, all of them should alert.
-
-{{< bookmark-test >}}

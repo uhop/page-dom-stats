@@ -1,9 +1,0 @@
-{{- $sizes := slice 0 1024 5120 10240 -}}
-<ul>
-  {{- range $sizes -}}
-    {{- $pad := strings.Repeat . "A" -}}
-    {{- $js := printf "javascript:(()=>{const p='%s';alert('ran: pad '+p.length)})()" $pad -}}
-    {{- $label := cond (eq . 0) "tiny" (printf "%d KB" (div . 1024)) -}}
-    <li><a href="{{ $js | safeURL }}">bookmark test — {{ $label }}</a></li>
-  {{- end -}}
-</ul>
