@@ -20,5 +20,6 @@ Open the page you want to inspect and click the extension's icon — the popup s
 
 ## Release notes
 
+- 1.1.0 — _Shared measurement core with two new shells (bookmarklet, console snippet); many new stats: DOM structure (hidden nodes, shadow DOM, iframes, percentiles), adopted style sheets, performance timings; Lighthouse verdicts._
 - 1.0.1 — _Scripts and inline styles counted separately; element paths hidden by default; fixed-layout tables._
 - 1.0.0 — _The initial release._
