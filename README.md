@@ -1,17 +1,17 @@
 # Page DOM Stats
 
-A simple Chrome extension to inspect performance-related properties of a web page: DOM size (total nodes, max children, max depth, scripts) and CSS size (style sheets, rules, selectors — totals and maxima).
+A simple Chrome extension — plus a bookmarklet and a console snippet that run in any browser — to inspect performance-related properties of a web page: DOM size and structure (nodes, hidden/shadow DOM, depth and fan-out percentiles), CSS size (style sheets, rules, selectors), and performance one-shots (timings, requests, transferred bytes).
 
 More information: https://uhop.github.io/page-dom-stats/
 
 ## Install
 
-- [Chrome Web Store](https://chromewebstore.google.com/detail/page-dom-stats/odnddbdbkhgfnfiaakkdlhjmefnfpdnh)
-- From source: open `chrome://extensions`, enable Developer mode, click "Load unpacked", select `src/`.
+- Extension: [Chrome Web Store](https://chromewebstore.google.com/detail/page-dom-stats/odnddbdbkhgfnfiaakkdlhjmefnfpdnh), or from source — open `chrome://extensions`, enable Developer mode, click "Load unpacked", select `src/`.
+- Bookmarklet and console snippet (any browser): both live on [the docs site](https://uhop.github.io/page-dom-stats/) — the bookmarklet is a drag-to-install link there (GitHub strips `javascript:` links, so it cannot be offered in this README).
 
 ## Usage
 
-Open the page you want to inspect and click the extension's icon — the popup shows the current tab's DOM and CSS stats.
+Open the page you want to inspect and click the extension's icon — the popup shows the current tab's DOM, CSS, and performance stats. The bookmarklet shows the same numbers in a removable overlay panel on the page itself; the console snippet prints them via `console.table`.
 
 ## Documentation
 
