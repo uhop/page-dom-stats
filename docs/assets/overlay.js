@@ -10,15 +10,15 @@ function renderStats(stats) {
   const path = p => (p ? p.join(' → ') : '');
   const src = u => u || 'inline';
   const note = (...parts) => parts.filter(Boolean).join(' — ');
-  const ms = value => (value === undefined ? undefined : fmt.format(value) + ' ms');
+  const ms = value => (value === undefined ? undefined : fmt.format(value) + '\u00a0ms');
   const bytes = b =>
     b === undefined
       ? undefined
       : b >= 1048576
-        ? (b / 1048576).toFixed(1) + ' MB'
+        ? (b / 1048576).toFixed(1) + '\u00a0MB'
         : b >= 1024
-          ? (b / 1024).toFixed(1) + ' KB'
-          : b + ' B';
+          ? (b / 1024).toFixed(1) + '\u00a0KB'
+          : b + '\u00a0B';
 
   const dom = stats.dom,
     css = stats.css,
@@ -62,7 +62,7 @@ function renderStats(stats) {
     ['Performance'],
     ['Time to first byte', ms(perf.ttfb)],
     ['DOMContentLoaded', ms(perf.domContentLoaded)],
-    ['Load', perf.load === 0 ? 'not finished yet' : ms(perf.load)],
+    ['Load', perf.load ? ms(perf.load) : undefined, perf.load === 0 ? 'not finished yet' : ''],
     ['First contentful paint', ms(perf.fcp)],
     ['Largest contentful paint', ms(perf.lcp)],
     ['Cumulative layout shift', perf.cls === undefined ? undefined : perf.cls.toFixed(3)],
@@ -79,7 +79,7 @@ function renderStats(stats) {
     ],
     ['Transferred', bytes(perf.transferred)],
     ['Fonts', perf.fonts],
-    ['JS heap', bytes(perf.jsHeap)]
+    ['JS heap', bytes(perf.jsHeap), perf.jsHeap === undefined ? '' : 'Chrome only']
   ];
 
   const panel = document.createElement('div');
@@ -128,7 +128,8 @@ function renderStats(stats) {
       tdName.style.cssText = 'padding:2px 4px;vertical-align:top;';
       const tdValue = document.createElement('td');
       tdValue.textContent = typeof value === 'number' ? fmt.format(value) : value || '';
-      tdValue.style.cssText = 'padding:2px 4px;text-align:right;vertical-align:top;';
+      tdValue.style.cssText =
+        'padding:2px 4px;text-align:right;vertical-align:top;white-space:nowrap;';
       const tdComment = document.createElement('td');
       tdComment.textContent = comment || '';
       tdComment.style.cssText =

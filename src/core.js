@@ -244,7 +244,7 @@ function gatherStats() {
   domStats.topTags = Object.entries(tagCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5)
-    .map(([tag, count]) => tag + '×' + count)
+    .map(([tag, count]) => tag + '\u00d7' + count) // escaped multiplication sign: survives non-UTF-8 embedders
     .join(' ');
 
   const cssStats = getStyleStats();

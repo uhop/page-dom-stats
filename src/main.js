@@ -43,10 +43,14 @@ const formatUrl = url => {
 };
 
 const formatBytes = bytes => {
-  if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + ' MB';
-  if (bytes >= 1024) return (bytes / 1024).toFixed(1) + ' KB';
-  return bytes + ' B';
+  if (bytes === undefined) return undefined;
+  if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + '&nbsp;MB';
+  if (bytes >= 1024) return (bytes / 1024).toFixed(1) + '&nbsp;KB';
+  return bytes + '&nbsp;B';
 };
+
+const formatMs = value =>
+  value === undefined ? undefined : putCommasIn(value.toFixed()) + '&nbsp;ms';
 
 const withVerdict = (verdict, rest) => [verdict, rest].filter(Boolean).join(' ');
 
@@ -95,12 +99,15 @@ place('css-max-rules', stats.css.maxRules, formatUrl(stats.css.maxRulesSource));
 place('css-max-selectors', stats.css.maxSelectors, formatUrl(stats.css.maxSelectorsSource));
 
 const perf = stats.perf;
-const ms = value => (value === undefined ? '' : 'ms');
-place('perf-ttfb', perf.ttfb, ms(perf.ttfb));
-place('perf-dcl', perf.domContentLoaded, ms(perf.domContentLoaded));
-place('perf-load', perf.load, perf.load ? 'ms' : perf.load === 0 ? 'not finished yet' : '');
-place('perf-fcp', perf.fcp, ms(perf.fcp));
-place('perf-lcp', perf.lcp, ms(perf.lcp));
+place('perf-ttfb', formatMs(perf.ttfb));
+place('perf-dcl', formatMs(perf.domContentLoaded));
+place(
+  'perf-load',
+  perf.load ? formatMs(perf.load) : undefined,
+  perf.load === 0 ? 'not finished yet' : ''
+);
+place('perf-fcp', formatMs(perf.fcp));
+place('perf-lcp', formatMs(perf.lcp));
 if (perf.cls !== undefined) place('perf-cls', perf.cls.toFixed(3));
 place(
   'perf-requests',
@@ -113,6 +120,6 @@ place(
       .join(' ')
   )
 );
-if (perf.transferred !== undefined) place('perf-transferred', formatBytes(perf.transferred));
+place('perf-transferred', formatBytes(perf.transferred));
 place('perf-fonts', perf.fonts);
-if (perf.jsHeap !== undefined) place('perf-js-heap', formatBytes(perf.jsHeap), 'Chrome only');
+place('perf-js-heap', formatBytes(perf.jsHeap), perf.jsHeap !== undefined ? 'Chrome only' : '');

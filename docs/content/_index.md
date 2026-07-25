@@ -12,17 +12,25 @@ Install the current version: [chrome web store](https://chrome.google.com/websto
 
 This is a simple Chrome extension to inspect performance-related properties of a web page:
 
-- DOM size:
-  - Total number of DOM nodes
-  - Maximum number of children
-  - Maximum depth
-  - Total number of scripts
+- DOM size and structure:
+  - Total number of nodes, split into elements and text nodes
+  - Hidden nodes — inside `display: none` subtrees
+  - Shadow DOM: number of roots and nodes in shadow trees
+  - Iframes — same-origin ones are measured too; cross-origin ones are counted as unmeasurable
+  - Top tags by frequency
+  - Maximum and 95th-percentile number of children (fan-out)
+  - Maximum and 95th-percentile depth
+  - Maximum number of attributes per element and the number of inline `style` attributes
+  - Number of scripts, including inline ones
 - CSS size:
-  - Total number of style sheets
-  - Total number of rules
-  - Total number of selectors
-  - Maximum number of rules
-  - Maximum number of selectors
+  - Style sheets: total, inline, adopted, and unaccessible (cross-origin)
+  - Rules and selectors: totals and per-sheet maxima
+- Performance:
+  - Timings: time to first byte, `DOMContentLoaded`, load, first contentful paint, largest contentful
+    paint, cumulative layout shift
+  - Requests and transferred bytes, broken down by type
+  - Number of loaded fonts and the JS heap size (Chrome)
+- Verdicts against Lighthouse guidance where a value crosses it: total nodes, children, depth
 
 Sample output:
 
